@@ -1,0 +1,119 @@
+router 1
+
+interface fa0/0
+ip address 10.1.0.254 255.255.255.0
+ip helper-address 192.168.5.2
+do wr
+no shut
+
+interface se2/0
+ip address 100.100.200.1 255.255.255.252
+clock rate 64000
+do wr
+no shut
+
+interface se3/0
+ip address 100.100.200.5 255.255.255.252
+do wr
+no shut
+
+router ospf 1
+network 10.1.0.0 0.0.0.255 area 0
+network 100.100.200.0 0.0.0.255 area 0
+network 100.100.200.4 0.0.0.255 area 0
+
+router 2
+
+interface fa0/0
+ip address 10.2.0.254 255.255.255.0
+ip helper-address 192.168.5.2
+do wr
+no shut
+
+interface se2/0
+ip address 100.100.200.9 255.255.255.252
+clock rate 64000
+do wr
+no shut
+
+interface se3/0
+ip address 100.100.200.13 255.255.255.252
+do wr
+no shut
+
+router ospf 1
+network 10.2.0.0 0.0.0.255 area 0
+network 100.100.200.8 0.0.0.255 area 0
+network 100.100.200.12 0.0.0.255 area 0
+
+router 3
+
+interface fa0/0
+ip address 172.16.1.254 255.255.255.0
+ip helper-address 192.168.5.2
+do wr
+no shut
+
+interface se2/0
+ip address 100.100.200.18 255.255.255.252
+do wr
+no shut
+
+interface se3/0
+ip address 100.100.200.10 255.255.255.252
+do wr
+no shut
+
+router ospf 1
+network 172.16.1.0 0.0.0.255 area 0
+network 100.100.200.16 0.0.0.255 area 0
+network 100.100.200.8 0.0.0.255 area 0
+
+router 4
+
+interface fa0/0
+ip address 172.16.2.254 255.255.255.0
+ip helper-address 192.168.5.2
+do wr
+no shut
+
+interface se2/0
+ip address 100.100.200.2 255.255.255.252
+do wr
+no shut
+
+interface se3/0
+ip address 100.100.200.17 255.255.255.252
+do wr
+no shut
+
+
+router ospf 1
+network 172.16.2.0 0.0.0.255 area 0
+network 100.100.200.0 0.0.0.255 area 0
+network 100.100.200.16 0.0.0.255 area 0
+
+router 5
+
+interface fa0/0
+ip address 192.168.5.254 255.255.255.0
+ip helper-address 192.168.5.2
+do wr
+no shut
+
+interface se2/0
+ip address 100.100.200.6 255.255.255.252
+clock rate 64000
+do wr
+no shut
+
+interface se3/0
+ip address 100.100.200.13 255.255.255.252
+clock rate 64000
+do wr
+no shut
+
+router ospf 1
+network 192.168.5.0 0.0.0.255 area 0
+network 100.100.200.4 0.0.0.255 area 0
+network 100.100.200.12 0.0.0.255 area 0
